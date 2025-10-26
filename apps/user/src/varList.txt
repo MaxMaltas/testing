@@ -1,0 +1,36 @@
+Lista TOTAL de Variables Backend Necesarias:
+Variables del Usuario (Auth Service):
+- user.mail - Email del usuario [Dashboard + Profile] OK
+- user.nickname - Nickname/username del usuario [Dashboard + Profile] OK
+Variables de Estadísticas Personales (User Service):
+- user.avatarUrl - URL del avatar del usuario [Profile only] OK
+- userStats.totalMatches - Total de partidas jugadas [Dashboard + Profile] OKDISPONIBLE como matches_played
+- userStats.wins - Número de victorias [Dashboard + Profile] OK
+- userStats.losses - Número de derrotas [Dashboard + Profile] OK
+- userStats.winRate - Porcentaje de victorias [Dashboard + Profile] OKCALCULABLE (wins/matches_played * 100)
+- userStats.bestStreak - Mejor racha de victorias consecutivas [Dashboard only] FALTA agregar columna
+Variables de Estadísticas Globales (Match Service):
+- globalStats.topPlayers[] - Array con top 10 jugadores [Dashboard only] OKDISPONIBLE (query agregada)
+- topPlayers[].nickname - Nombre del jugador [Dashboard only] OK
+- topPlayers[].wins - Victorias del jugador [Dashboard only] OK
+- topPlayers[].winRate - Win rate del jugador [Dashboard only] OKCALCULABLE
+- globalStats.avgMatchLength - Duración promedio de partidas [Dashboard only] OKCALCULABLE AVG(finished_at - started_at)
+- globalStats.totalGamesPlayed - Total de partidas jugadas [Dashboard only] OKDISPONIBLE COUNT(*) FROM matches WHERE status='finished'
+- globalStats.globalWinRate - Win rate global del sistema [Dashboard only] OKCALCULABLE
+Variables de Historial de Partidas (Match Service):
+- matchHistory[] - Array de partidas recientes [Dashboard + Profile] OK
+- matchHistory[].date - Fecha: "2025-10-01" [Dashboard + Profile] DISPONIBLE como finished_at
+- matchHistory[].opponentNickname - "Alice", "Bob" [Dashboard + Profile] DISPONIBLE (JOIN con users)
+- matchHistory[].result - "W" o "L" [Dashboard + Profile] CALCULABLE (comparar scores)
+- matchHistory[].ownScore - "5", "4" [Dashboard + Profile] DISPONIBLE como score
+- matchHistory[].opponentScore - "3", "5" [Dashboard + Profile] DISPONIBLE como score
+Variables para Upload de Avatar (User Service):  
+- userId - ID del usuario [Profile only] DISPONIBLE
+- avatarFile - Archivo de imagen subido [Profile only] FALTA endpoint upload
+- newAvatarUrl - Nueva URL después del upload [Profile only] FALTA lógica update
+Resumen Final:
+DISPONIBLES/CALCULABLES: 18/20 variables (90%)
+FALTANTES: 2/20 variables (10%)
+Variables que necesitas implementar:
+- userStats.bestStreak - Agregar columna best_streak a tabla user_stats
+- avatarFile + newAvatarUrl - Implementar upload de avatars (endpoint + storage)

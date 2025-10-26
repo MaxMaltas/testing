@@ -1,0 +1,56 @@
+
+.panel-card--xl {
+  width: min(1180px, 96vw);
+  min-height: 300px;   
+  padding: 28px 32px;
+  box-sizing: border-box;
+}
+
+/* Header */
+.home-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 10px; 
+}
+
+.home-title {
+  margin: 0;
+  font-size: clamp(36px, 6vw, 64px);
+  line-height: 1;
+}
+
+/* Barra de usuario a la derecha */
+.home-userbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.user-label { font-size: 12px; opacity: .7; }
+.user-name  { font-size: 16px; } 
+
+/* Botonera derecha */
+.home-actions-right {
+  display: flex;
+  gap: 10px;
+}
+
+/* CTA centradas */
+.home-cta {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: clamp(32px, 10vh, 120px); 
+}
+
+/* Botones del panel */
+.btn { padding: 12px 18px; font-size: 16px; }
+.btn:hover { background: #0f0f0f; }
+.btn-ghost { background: transparent; border-color: yellowgreen; }
+
+.btn-lg { font-size: 20px; padding: 14px 22px; }
+
+.btn-primary { background: #111; }

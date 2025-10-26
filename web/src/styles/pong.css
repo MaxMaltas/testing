@@ -1,0 +1,47 @@
+html, body {
+  background: #000;
+  margin: 0;
+  min-height: 100%;
+}
+
+#app {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#board {
+  display: none;
+  background: #000;
+  border: 12px solid yellowgreen;
+  box-sizing: content-box;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  width: min(96vw, 1200px);
+  height: auto;
+  aspect-ratio: 4 / 3;
+}
+.btn {
+  padding: 10px 12px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 14px;
+  color: #fff;
+  background: #111;
+  border: 2px solid yellowgreen;
+  cursor: pointer;
+}
+.btn:hover { background: #0f0f0f; }
+
+.game-exit {
+  position: absolute;
+  top: 18px;
+  right: 26px;
+  z-index: 20;
+  font-size: 12px;
+  padding: 8px 10px;
+  background: #000;
+}
+
+#board { box-shadow: 0 0 0 2px rgba(154,205,50,.25) inset; }

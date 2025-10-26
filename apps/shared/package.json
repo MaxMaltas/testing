@@ -1,0 +1,11 @@
+{
+  "name": "@app/shared",
+  "private": true,
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "exports": "./dist/index.js",
+  "files": ["dist"],
+  "scripts": { "build": "tsc -p tsconfig.json" },
+  "dependencies": { "fastify": "^5.6.0" },
+  "devDependencies": { "typescript": "^5.6.2", "@types/node": "^22.7.4" }
+}

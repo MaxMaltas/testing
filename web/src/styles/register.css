@@ -1,0 +1,47 @@
+.form-col {
+  width: min(520px, 92vw);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.field { display: flex; flex-direction: column; gap: 6px; text-align: left; }
+.label { font-size: 12px; opacity: 0.85; }
+
+.form-col input,
+.form-col .btn {
+  width: 100%;
+  box-sizing: border-box;   
+  padding: 10px 12px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 14px;
+  line-height: 1.2;
+  color: #fff;
+  background: #111;        
+  border: 2px solid yellowgreen; 
+  outline: none;
+}
+
+.form-col input:focus {
+  box-shadow: 0 0 0 2px rgba(154, 205, 50, 0.35);
+}
+
+.form-col .btn {
+  display: block;
+  text-align: center;
+  cursor: pointer;
+}
+
+.form-col .btn-primary:hover {
+  background: #0f0f0f;
+}
+
+.panel-actions.row {
+  margin-top: 8px;
+  gap: 12px;
+}
+.panel-actions.row .btn {
+  font-size: 14px;
+  padding: 8px 12px;
+}
