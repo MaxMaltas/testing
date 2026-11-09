@@ -11,6 +11,21 @@ help:
 	@echo "Prod:   make up | up-d | down | build | re | logs"
 	@echo "Dev:    make dev-up | dev-build | dev-down | dev-logs"
 	@echo "Per-svc: up-<svc> build-<svc> re-<svc> logs-<svc> restart-<svc> stop-<svc> sh-<svc>"
+	@echo "Certs:  make certs (self-signed dev certificate, created automatically)"
+
+# ---- Dev TLS certificate (not versioned, generated locally) ----
+CERT_DIR := apps/nginx/certs
+
+.PHONY: certs
+certs: $(CERT_DIR)/dev.crt
+
+$(CERT_DIR)/dev.crt:
+	@mkdir -p $(CERT_DIR)
+	openssl req -x509 -nodes -newkey rsa:2048 -days 365 -subj "/CN=localhost" \
+		-keyout $(CERT_DIR)/dev.key -out $(CERT_DIR)/dev.crt
+
+# Every target that builds or starts nginx needs the certificate
+up up-d build re dev-up dev-up-d dev-re dev-build: certs
 
 # ---- Production (base only) ----
 up:
@@ -46,11 +61,11 @@ dev-logs:
 	$(DC) $(DEV) logs -f
 
 # ---- Per-service (prod by default) ----
-up-%:
+up-%: certs
 	$(DC) $(BASE) up -d --build $*
-build-%:
+build-%: certs
 	$(DC) $(BASE) build $*
-re-%:
+re-%: certs
 	$(DC) $(BASE) build --no-cache $*
 	$(DC) $(BASE) up -d $*
 logs-%:
